@@ -91,6 +91,7 @@ spec:
               name: storage
             - mountPath: /db
               name: db
+            {{- toYaml .Values.executor.volumeMounts | default "" | nindent 12 }}
           {{- if .Values.executor.resources }}
           resources:
 {{ .Values.executor.resources | toYaml | indent 12 }}
@@ -157,6 +158,7 @@ spec:
             - mountPath: /etc/tls
               name: tls
             {{- end }}
+            {{- toYaml .Values.executor.volumeMounts | default "" | nindent 12 }}
           {{- if .Values.executor.resources }}
           resources:
 {{ .Values.executor.resources | toYaml | indent 12 }}
@@ -195,3 +197,4 @@ spec:
           secret:
             secretName: {{ include "ra-self-hosted.cert-secret-name" .}}
           {{- end }}
+        {{- toYaml .Values.executor.volumes | default "" | nindent 8 }}
