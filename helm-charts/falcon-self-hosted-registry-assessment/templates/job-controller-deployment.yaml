@@ -76,6 +76,7 @@ spec:
             - mountPath: /etc/tls
               name: tls
             {{- end }}
+            {{- toYaml .Values.jobController.volumeMounts | default "" | nindent 12 }}
           securityContext:
 {{ if .Values.jobController.securityContext }}
 {{ .Values.jobController.securityContext | toYaml | indent 12 }}
@@ -134,6 +135,7 @@ spec:
             - mountPath: /etc/tls
               name: tls
             {{- end }}
+            {{- toYaml .Values.jobController.volumeMounts | default "" | nindent 12 }}
           securityContext:
 {{ if .Values.jobController.securityContext }}
 {{ .Values.jobController.securityContext | toYaml | indent 12 }}
@@ -160,3 +162,4 @@ spec:
           secret:
             secretName: {{ include "ra-self-hosted.cert-secret-name" .}}
         {{- end }}
+        {{- toYaml .Values.jobController.volumes | default "" | nindent 8 }}

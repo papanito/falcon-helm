@@ -214,6 +214,9 @@ jobController:
 
   additionalSecretEnvFrom: []
 
+  volumeMounts: {}
+  volumes: {}
+
   # Use to override the global podSecurityContext        
   # podSecurityContext:
   #   runAsUser: 1001
